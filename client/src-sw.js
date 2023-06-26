@@ -23,8 +23,24 @@ warmStrategyCache({
   urls: ['/index.html', '/'],
   strategy: pageCache,
 });
+// registerRoute() will return a cached page if there is no network connectivity
+registerRoute(
+  ({ request })  => ['style', 'script', 'worker'].includes (request.mode === 'navigate', pageCache),
+  new StaleWhileRevalidate({
+    cacheName: 'asset-cache',
+    plugins: [
+      // Ensure that only requests that result in a 200 status are cached
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+    ],
+  })
+);
 
-registerRoute(({ request }) => request.mode === 'navigate', pageCache);
+// // offlineFallback() will return a cached page if there is no network connectivity
+// offlineFallback([
+//   { urlPattern: /\.(?:html|css|js|json)$/, strategy: pageCache },
+// ]);
 
 // TODO: Implement asset caching
 registerRoute();
