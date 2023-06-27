@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start:dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
     "start": "node server.js",
     "server": "nodemon server.js",
     "build": "cd client && npm run build",
@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "express": "^4.17.1",
     "if-env": "^1.0.4"
   },
