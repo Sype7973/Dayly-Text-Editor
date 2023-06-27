@@ -38,7 +38,7 @@ export const getDb = async () => {
   console.log(result);
   console.log('Data retrieved', result);
 
-  return result.value;
+  return result;
 };
 
 initdb();
