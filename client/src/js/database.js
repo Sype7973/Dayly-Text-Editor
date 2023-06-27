@@ -20,10 +20,8 @@ export const putDb = async (content) => {
   const store = tx.objectStore('jate');
   
   try {
-    await store.put(content);
-    console.log('putDb put', content);
-    await tx.done;
-    console.log('putDb done');
+    const request = store.put({ id: 1, value: content });
+    const result = await request;
   } catch (error) {
     console.error('putDb error', error);
   }
@@ -35,17 +33,12 @@ export const getDb = async () => {
   const jateDb = await openDB('jate', 1);
   const tx = jateDb.transaction('jate', 'readonly');
   const store = tx.objectStore('jate');
-  const request = store.getAll();
+  const request = store.get(1);
   const result = await request;
+  console.log(result);
   console.log('Data retrieved', result);
 
-  if (result.length > 0) {
-    const lastEntry = result[result.length - 1];
-   
-    return lastEntry.text;
-  } else {
-    return null;
-  }
+  return result.value;
 };
 
 initdb();
