@@ -1,4 +1,4 @@
-const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
+const { warmStrategyCache } = require('workbox-recipes');
 const { CacheFirst, StaleWhileRevalidate } = require('workbox-strategies');
 const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
@@ -24,12 +24,13 @@ warmStrategyCache({
   strategy: pageCache,
 });
 // registerRoute() will return a cached page if there is no network connectivity
+registerRoute(({ request }) => request.mode === "navigate", pageCache);
+// Set up asset cache
 registerRoute(
-  ({ request })  => ['style', 'script', 'worker'].includes (request.mode === 'navigate', pageCache),
+  ({ request }) => ["style", "script", "worker"].includes(request.destination),
   new StaleWhileRevalidate({
-    cacheName: 'asset-cache',
+    cacheName: "asset-cache",
     plugins: [
-      // Ensure that only requests that result in a 200 status are cached
       new CacheableResponsePlugin({
         statuses: [0, 200],
       }),
