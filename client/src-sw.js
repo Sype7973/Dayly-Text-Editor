@@ -43,6 +43,3 @@ registerRoute(
 // offlineFallback([
 //   { urlPattern: /\.(?:html|css|js|json)$/, strategy: pageCache },
 // ]);
-
-// TODO: Implement asset caching
-registerRoute();
