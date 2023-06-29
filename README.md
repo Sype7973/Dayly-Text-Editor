@@ -2,26 +2,27 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+- my motivation for this project was to create a text editor that would allow me to write and save notes to a cache and then be able to access them later online or offline.
+- I built this project to utilise my knowledge of PWA's and webpacks as well as plugins such as workbox and indexedDB.
+- This application solves the problem of not being able to access notes offline and not being able to save notes to a cache storage and indexDB.
+- I learn't that webpacks and PWA's are very useful and can be used to create very useful applications, as well as how to use workbox and indexedDB to create a cache storage and database for my application.
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+to install the application you can clone the repository from github and then run the command npm install to install all the dependencies. you can then run the command npm run start to build and run the application.
+
+https://github.com/Sype7973/Dayly-Text-Editor
+
+Live Heroku App:
+https://dayly-text-editor-f1fb305bf28d.herokuapp.com/
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Once you have installed the application you can run the command npm run start to build and run the application. you can then use the application to write and save notes to a cache storage and indexDB. you can also access the notes offline by installing the application as a PWA.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![Online Screencap](/img/screencap.PNG)
+![ofline Screencap](/img/screencap2.PNG)
 
 
 ---
